@@ -12,4 +12,3 @@ e <- rnorm(100, 0, 1)
 y <- 1.5 - 3 * x + e
 plot(x,y)
 
-https://github.com/Keniajin/ComputingForDataAnalysis.git 
