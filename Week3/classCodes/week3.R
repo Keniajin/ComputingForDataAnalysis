@@ -94,3 +94,37 @@ histogram(~temperature | wind.cut, data=environmental)
 histogram(~ozone | wind.cut, data=environmental)
 histogram(~ozone | wind.cut * temp.cut, data=environmental)
 
+#ggplot using qplot - quick plot
+library(ggplot2)
+str(mpg)
+qplot(displ,hwy,data=mpg,color=drv)
+qplot(hwy,data=mpg,fill=drv)
+#panels
+qplot(displ,hwy,data=mpg,facets=.~drv)
+qplot(hwy,data=mpg,facets=.~drv,binwidth=2)
+
+#maacs data
+maacs <- rea
+
+#hist of eno
+qplot(log(eno),   data      =        maacs)
+str(maacs)
+
+##ggplot a <- qplot(logpm25, NocturnalSympt, data = maacs, facets = . ~ bmicat, geom =c("point", "smooth"), method = "lm”)
+
+g <- ggplot(maacs, aes(logpm25, NocturnalSympt))
+g + geom_point()
+
+#adding more lyers smooth line and facets
+g + geom_point() + geom_smooth(method="lm") + facets_grid = (. ~ bmicat)
+#add color
+g + geom_point(aes(color=bmicat),size=4,alpha=1/2) + geom_smooth(method="lm") + facets_grid = (. ~ bmicat) + theme_bw()
+
+#adding labels
+g + geom_point(aes(color = bmicat)) + labs(title = "MAACS Cohort") + labs(x = expression("log "
+                                                                                         * PM[2.5]), y = "Nocturnal Symptoms")
+
+#adding lines
+g + geom_point(aes(color = bmicat), size = 2, alpha = 1/2) +
+  geom_smooth(size = 4, linetype = 3, method = "lm", se = FALSE)
+point
